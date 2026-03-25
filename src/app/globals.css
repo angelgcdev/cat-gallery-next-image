@@ -1,26 +1,122 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4eadb;
+  --foreground: #23170f;
+  --paper: #fbf2e5;
+  --paper-strong: #f2e0c7;
+  --ink-soft: #4e392b;
+  --muted: #7b6658;
+  --accent: #bc5a33;
+  --accent-strong: #8d381a;
+  --accent-soft: #e7b37f;
+  --line: rgba(111, 77, 52, 0.2);
+  --card-shadow: 0 20px 50px rgba(74, 42, 24, 0.14);
+  --card-shadow-strong: 0 28px 80px rgba(58, 30, 15, 0.18);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-paper-strong: var(--paper-strong);
+  --color-ink-soft: var(--ink-soft);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --font-sans: "Segoe UI", "Avenir Next", "Trebuchet MS", sans-serif;
+  --font-mono: "Cascadia Mono", "Consolas", "Courier New", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--background);
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at top left, rgba(255, 223, 176, 0.92) 0%, transparent 30%),
+    radial-gradient(circle at 85% 18%, rgba(232, 168, 119, 0.5) 0%, transparent 24%),
+    radial-gradient(circle at 50% 100%, rgba(207, 121, 75, 0.18) 0%, transparent 28%),
+    linear-gradient(180deg, #f7efdf 0%, #f2e4d3 46%, #ecdbc7 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  min-height: 100vh;
+}
+
+body::before {
+  background:
+    linear-gradient(90deg, rgba(117, 85, 57, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(117, 85, 57, 0.08) 1px, transparent 1px);
+  background-size: 72px 72px;
+  content: "";
+  inset: 0;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.28), transparent 76%);
+  pointer-events: none;
+  position: fixed;
+  z-index: -2;
+}
+
+body::after {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 250, 240, 0.7) 0, transparent 16%),
+    radial-gradient(circle at 80% 35%, rgba(255, 243, 221, 0.5) 0, transparent 14%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: -1;
+}
+
+.page-enter {
+  animation: page-enter 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.editorial-shell {
+  position: relative;
+}
+
+.editorial-shell::before {
+  background: linear-gradient(180deg, rgba(255, 251, 244, 0.65), rgba(255, 251, 244, 0.18));
+  border: 1px solid rgba(120, 82, 53, 0.14);
+  border-radius: 32px;
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.editorial-kicker {
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.editorial-panel {
+  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(251, 242, 229, 0.84), rgba(251, 242, 229, 0.68));
+  border: 1px solid var(--line);
+  box-shadow: var(--card-shadow);
+}
+
+.editorial-number {
+  color: rgba(35, 23, 15, 0.14);
+  font-family: var(--font-display), serif;
+  font-size: clamp(4.5rem, 12vw, 8rem);
+  line-height: 0.85;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
