@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Cat Gallery Lab
 
 Proyecto de practica para entender `next/image` con una galeria de gatitos usando [The Cat API](https://thecatapi.com/).
@@ -52,3 +53,7 @@ Abrir [http://localhost:3000](http://localhost:3000).
 ```bash
 npm run lint
 ```
+=======
+# cat-gallery-next-image
+Comprendiendo como funcion el componente de Next.js Image
+>>>>>>> 06d6a2ecfa673b8b4b1770ac86c56ab80259d64c
